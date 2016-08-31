@@ -1,0 +1,11 @@
+<p>
+	<input	type="button" name="resetMovFilterBtn"
+				class="btn btn-xs btn-warning" value="Resetea Filtros"
+				ng-click="filtroMovCtr.resetAllFilters()"/>
+	<input	type="button" name="printMovFilterBtn"
+				class="btn btn-xs btn-primary" value="Imprimir"
+				ng-click="utilFilterMovCtrl.printMovFilter('htmlPrintOut')" />
+	<input	type="button" name="saveExcelMovFilterBtn"
+				class="btn btn-xs btn-primary" value="guardar Excel"
+				ng-click="utilFilterMovCtrl.saveExcelMovFilter('tableCountList')" />
+</p>

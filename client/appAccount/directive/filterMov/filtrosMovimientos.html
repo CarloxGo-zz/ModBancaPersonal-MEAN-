@@ -1,0 +1,202 @@
+<!-- FILTROO BUSQUEDA PERSONAL -->
+<p id="personalSearchFilter">
+    <label for="importe" class="control-label">Filtrar</label> : 
+    <input type="search" name="filtro" class="input text-center"
+            reset-fixed-table
+            placeholder="qué buscas?" autofocus='autofocus'
+            ng-class="{ 'selectedInput' : !!filtroMovCtr.valorBuscado }"
+            ng-model="filtroMovCtr.valorBuscado"/>
+    <a href=""  ng-click="filtroMovCtr.resetSearch()"
+                ng-show="filtroMovCtr.valorBuscado!=''">
+        <span class="glyphicon glyphicon-remove-circle"></span>
+    </a>
+</p>
+
+<!-- PANEL DE FILITROS PERSONALIZADOS: por importe, rango de fechas, tipo de importe y categoria del importe-->
+<div class="panel panel-default" id="panelAdvancedFilters">
+    <div    class="panel-heading"
+            display-panel-filters>
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapseOne" href="">
+          filtros avanzados
+        </a>
+      </h4>
+    </div>
+
+    <!-- ************************* PANEL **************************-->
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+
+<!-- FILTRO POR IMPORTE -->
+<div class="filterPanel panelFilterImporte">
+  <header>
+    <h3>filtro por importe</h3>
+  </header>
+
+  <ul class="pagination pagination-sm">
+      <li ><a href="" ng-click="filtroMovCtr.valorCorte=true"
+                      ng-class=" { 'selectedButon' : filtroMovCtr.valorCorte==true } ">
+           cualquier importe</a></li>
+  </ul>
+
+  <ul class="pagination pagination-sm">
+      <li ><a href="" ng-click="filtroMovCtr.valorCorte=false"
+                      reset-fixed-table
+                      ng-class=" { 'selectedButon' : filtroMovCtr.valorCorte==false } ">
+           importe nulo</a></li>
+  </ul>
+
+  <ul class="pagination pagination-sm">
+      <li><a href=""  ng-click="filtroMovCtr.valorCorte=500"
+                      reset-fixed-table
+                      ng-class=" { 'selectedButon' : filtroMovCtr.valorCorte==500 } ">&gt; 500</a></li>
+      <li><a href=""  ng-click="filtroMovCtr.valorCorte=1000"
+                      reset-fixed-table
+                      ng-class=" { 'selectedButon' : filtroMovCtr.valorCorte==1000 } ">&gt;  1000</a></li>
+      <li><a href=""  ng-click="filtroMovCtr.valorCorte=5000"
+                      reset-fixed-table
+                      ng-class=" { 'selectedButon' : filtroMovCtr.valorCorte==5000 } ">&gt; 5000</a></li>
+  </ul>
+
+  <ul class="pagination pagination-sm btn-info">
+      <li><a href=""  ng-click="filtroMovCtr.valorCorte=-500"
+                      reset-fixed-table
+                      ng-class=" { 'selectedButon' : filtroMovCtr.valorCorte==-500 } ">&lt; 500</a></li>
+      <li><a href=""  ng-click="filtroMovCtr.valorCorte=-1000"
+                      reset-fixed-table
+                      ng-class=" { 'selectedButon' : filtroMovCtr.valorCorte==-1000 } ">&lt; 1000</a></li>
+      <li><a href=""  ng-click="filtroMovCtr.valorCorte=-5000"
+                      reset-fixed-table
+                      ng-class=" { 'selectedButon' : filtroMovCtr.valorCorte==-5000 } ">&lt; 5000</a></li>
+  </ul>
+</div>  
+
+
+<!-- FILTRO POR RANGO DE FECHA -->
+<div class="filterPanel panelFilterFecha">
+  <header>
+    <h3>rango de fechas</h3>
+  </header>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <ul class="nav nav-justified" role="tablist">
+          <!-- SWITCH DATA FILTER -->
+          <li><input type="checkbox" id="dateFilter" name="dateFilter"
+                  ng-model="filtroMovCtr.checkData"
+                  reset-fixed-table
+                  ng-click="filtroMovCtr.resetDate()" >
+              <label for="dateFilter">filtro fecha</label>
+          </li>
+      </ul>
+
+          <!-- FILTRO MES ACTUAL  -->
+      <ul class="nav nav-stacked" role="tablist"
+          ng-show="!!filtroMovCtr.checkData">
+          <li><input
+                  type="radio" id="dateActualMonth" name="dateActual"
+                  ng-disabled="!filtroMovCtr.checkData"
+                  ng-model="filtroMovCtr.checkActualMonth"
+                  ng-click="filtroMovCtr.setActualMonth()"
+                  />
+              <label for="dateActualMonth">Este Mes</label>
+          </li>
+          
+          <!-- FILTRO AÑO ACTUAL -->
+          <li><input
+                  type="radio" id="dateActualYear" name="dateActual"
+                  ng-disabled="!filtroMovCtr.checkData"
+                  ng-model="filtroMovCtr.checkActualYear"
+                  ng-click="filtroMovCtr.setActualYear()" />
+              <label for="dateActualYear">Este Año</label>
+          </li>
+
+          <!-- FILTRO SEMANA ACTUAL -->
+          <li><input
+                  type="radio" id="dateActualWeek" name="dateActual"
+                  ng-disabled="!filtroMovCtr.checkData"
+                  ng-model="filtroMovCtr.checkActualWeek"
+                  ng-click="filtroMovCtr.setActualWeek()" />
+              <label for="dateActualWeek">Esta semana</label>
+          </li>
+
+          <!-- FILTRO HOY ACTUAL -->
+          <li><input type="radio" id="dateActualDay" name="dateActual"
+                  ng-disabled="!filtroMovCtr.checkData"
+                  ng-model="filtroMovCtr.checkToday"
+                  ng-click="filtroMovCtr.setToday()" />
+              <label for="dateActualDay">Hoy</label>
+          </li>
+        </ul>
+      </div>
+        
+      <div class="col-xs-12 col-sm-6">
+          <!-- CALENDARIO -->
+        <ul class="nav nav-stacked" role="tablist">
+          <li>
+            <span class="forFilterDate">desde</span>
+            <input type="date" class="filterDate text-center"
+                  ng-disabled="!filtroMovCtr.checkData"
+                  ng-class=" { 'selectedButon' : filtroMovCtr.checkData } "
+                  reset-fixed-table
+                  prevent-data-change
+                  ng-model="filtroMovCtr.start_date"/>
+              <span class="glyphicon glyphicon-time"></span>
+          </li>
+
+          <li>
+            <span class="forFilterDate">hasta</span>
+            <input type="date" class="filterDate text-center"
+                  ng-disabled="!filtroMovCtr.checkData"
+                  ng-class=" { 'selectedButon' : filtroMovCtr.checkData } "
+                  prevent-data-change
+                  ng-model="filtroMovCtr.end_date">
+              <span class="glyphicon glyphicon-time"></span>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- FILTRO POR TIPO DE CATEGORIA  -->
+<div class="filterPanel panelFilterCateg">
+  <header>
+    <h3>filtro por categoria</h3>
+  </header>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="btn-group-vertical btnValorBuscado">
+          <button type="button"
+                  ng-class=" {    'btn btn-xs btn-default' : filtroMovCtr.valorBuscado == 'gasto',
+                                  'btn btn-xs btn-success' : filtroMovCtr.valorBuscado != 'gasto' } "
+                  reset-categ
+                  tableCateg='ingreso'>ingresos</button>
+          <button type="button"
+                  ng-class=" {    'btn btn-xs btn-default' : filtroMovCtr.valorBuscado == 'ingreso',
+                                  'btn btn-xs btn-success' : filtroMovCtr.valorBuscado != 'ingreso' } "
+                  reset-categ
+                  tableCateg='gasto'>gastos</button>
+        </div>
+     </div>
+    
+    <div class="col-xs-12 col-sm-6">
+        <!-- FILTRO POR CATEGORIA  ESPECIFICA-->
+      <span ng-show="filtroMovCtr.valorBuscado=='ingreso'">
+            <categoria-movimientos-ingresos
+                    model-categ="filtroMovCtr.categoria">
+            </categoria-movimientos-ingresos>
+      </span>
+
+      <span ng-show="filtroMovCtr.valorBuscado=='gasto'">
+            <categoria-movimientos-gastos
+                    model-categ="filtroMovCtr.categoria">
+            </categoria-movimientos-gastos>
+      </span>
+    </div>
+</div>
+
+      </div><!--fin panel-body-->
+    </div><!--fin collapse-->
+  </div><!--fin panel-->

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="description" content="aplicacion web de contabilidad personal, balance de movimientos, ingresos, gastos, filtros y guardar plantillas en .xslt google drive" />
+    <meta name="author" content="Fernando Palacios Landi" />
+    <title>cuentas bancarias, ingresos y gastos</title>
+
+    <!-- ENLACES EXTERNOS -->
+    <link rel="stylesheet" href="../vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../vendor/css/gh-fork-ribbon.css">
+    <script src="../vendor/js/angular-1.2.19.min.js"></script>
+    <script src="../vendor/js/angular-1.2.19-route.min.js"></script>
+    <script src="../vendor/js/angular-1.2.17-cookies.min.js"></script>
+    <script src="../vendor/js/jquery-1.10.2.min.js"></script>
+    <script src="../vendor/js/jquery.thfloat-0.7.2.min.js"></script>
+    <script src="../vendor/js/Chart.min.js"></script>
+    <!--[if lt IE 7]>
+        <p class="chromeframe">
+           You are using an <strong>outdated</strong> browser.<br/>
+           Please <a href="http://browsehappy.com/">upgrade your browser</a><br/>
+           or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.
+        </p>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script>window.html5 || document.write('<script src="../vendor/js/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+</head>
+<body>
+    <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+    <div class="row github-fork-ribbon-wrapper right">
+        <div class="github-fork-ribbon">
+            <a href="https://github.com/fernandoPalaciosGit/bancaEscuelaIT">Fork me on GitHub</a>
+        </div>
+    </div>
+
+    <div ng-app="accountsApp" class="row">
+      <div class="col-md-12 text-center"
+           ng-controller="navigationMenuController as menuCtrl">
+           <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+             <div class="navbar-inner">
+               <div class="container">
+
+                    <!-- mostrar si hay sesion -->
+                   <ul class="nav navbar-nav"
+                       ng-show="menuCtrl.checkIsLogin()">
+                       <li ng-class="{ 'active': menuCtrl.isActive('/') }">
+                          <a href="#/">Totales</a></li>
+                       <li ng-class="{ 'active': menuCtrl.isActive('/nuevo') }">
+                          <a href="#/nuevo">Nuevo</a></li>
+                       <li ng-class="{ 'active': menuCtrl.isActive('/lista') }">
+                          <a href="#/lista">Lista</a></li>
+                       <li ng-class="{ 'active': menuCtrl.isActive('/estadistica') }">
+                          <a href="#/estadistica">Estadisticas</a></li>
+                       <li class="closeSessionBtn"><a href="" un-login>Cerrar sesion</a></li>
+                   </ul>
+                   
+                   <!-- mostrar si NO hay sesion -->
+                   <ul  class="nav navbar-nav"
+                        ng-show="!menuCtrl.checkIsLogin()">
+                     <li ng-class="{ 'active': menuCtrl.isActive('/registro') }">
+                          <a href="#/registro">Acceso</a></li>
+                   </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="text-danger" href="#">{{mensaje}}</a></li>
+                    </ul>
+                    
+               </div>
+             </div>
+           </nav>
+      </div>
+      <div id="accountSectionViews" class="col-md-12 text-center">
+            <div class="container" ng-view></div> 
+      </div>
+    </div>
+
+    <script src="plugin.js"></script>
+    <script src="app.js"></script>
+    <script src="mainMenu.ctrl.js"></script>
+    <script src="controlAccount/accounting.ctrl.js"></script>
+    <script src="register/register.ctrl.js"></script>
+    <script src="singleAccount/unicoMov.ctrl.js"></script>
+    <script src="masterAccount/maestros.factory.js"></script>
+    <script src="movimientos.factory.js"></script>
+    <script src="filter/filterInputs.js"></script>
+    <script src="directive/headerMsg/mensaje.dir.js"></script>
+    <script src="directive/filterMov/filtrosMovimientos.dir.js"></script>
+    <script src="directive/tableMov/tableMovimientos.dir.js"></script>
+    <script src="directive/printOut/printOut.dir.js"></script>
+    <script src="directive/utilFilterTableMov/utilFilterMovimientos.dir.js"></script>
+    <script src="filterAccount/filterValues.factory.js"></script>
+    <script src="directive/clientMsg/message.dir.js"></script>
+    <script src="directive/categMov/categoriaMov.dir.js"></script>
+    <script src="estadistica/estadistica.ctrl.js"></script>
+</body>
+</html>

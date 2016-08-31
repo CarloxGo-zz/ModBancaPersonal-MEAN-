@@ -1,0 +1,30 @@
+ <!-- APLICATION : acumulados totales: mostrar ingresos, gastos y balance
+      IMPLEMENTACION: expresiones que muestran las propiedades del scope global con filtros -->
+<mensaje>{{accountsCtrl.titulo.totMovTpl}}</mensaje>
+<div id="totalCountsSection" class="row-fluid">
+    <div class="row placeholders">
+        <div class="col-xs-8 col-sm-4 placeholder">
+            <h4>Total Ingresos</h4>
+              <h1><span class="label label-info">
+                  {{ accountsCtrl.total.ingresos | number:2 | parseAmount:'Eur' }}
+              </span></h1>
+            <span class="text-muted">acumulado</span>
+        </div>
+        <div class="col-xs-8 col-sm-4 placeholder">
+            <h4>Total Gastos</h4>
+              <h1><span class="label label-info">
+                  {{ accountsCtrl.total.gastos | number:2 | parseAmount:'Eur' }}
+              </span></h1>
+            <span class="text-muted">acumulado</span>
+       </div>
+       <div class="col-xs-8 col-sm-4 placeholder">
+            <h4>Saldo</h4>
+              <h1><span class="label" ng-class="
+                {   'label-success': accountsCtrl.balance() >= 0,
+                    'label-danger' : accountsCtrl.balance() <0      }">
+                  {{ accountsCtrl.balance() | number:2 | parseAmount:'Eur' }}
+              </span></h1>
+            <span class="text-muted">ingresos - gastos</span>
+       </div>
+    </div>
+</div>

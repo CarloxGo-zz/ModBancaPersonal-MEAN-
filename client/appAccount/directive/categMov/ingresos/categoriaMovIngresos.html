@@ -1,0 +1,9 @@
+<div>
+  <label for="categ">Ingresos</label>
+  <select name="categ" 
+          ng-model="categMov.modelCateg"
+          categoria-buscada
+          ng-options="categ | capitalyzeAll for categ in categMov.maestros.categoriasIngresosPersonal" >
+      <option value=""></option>
+  </select>
+</div>

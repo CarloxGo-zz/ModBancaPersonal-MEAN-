@@ -1,0 +1,85 @@
+ <div class="row">
+	<div class="col-md-12 col-sm-12">
+
+			<ng-form class="form-horizontal" action=''
+					method="POST" novalidate name="accessUserForm.userField">
+				    <!-- EMAIL -->
+				    <div class="control-group">
+				      <label class="control-label" for="email">Email address</label>
+				      <div class="controls">
+				        <input type="email" name="email" placeholder="username@domainMail"
+				        			autofocus="autofocus" class="input-xlarge text-center"
+				        			ng-model="userField.email">
+				      </div>
+				    </div>
+				    
+				     <!-- PASSWORD -->
+				    <div class="control-group">
+				      <label class="control-label" for="password">Password access</label>
+				      <div class="controls">
+				        <input type="password" name="password" placeholder="******"
+				        			ng-minlength="4" ng-maxlength="10"
+				        			ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{1,}$/"
+				        			class="input-xlarge text-center"
+				        			ng-model="userField.password">
+				      </div>
+				    </div>
+				  
+				 <br><br>
+
+				 <!-- BOTONES DE ACCESO -->  		
+			    <div class="control-group">
+				      <!-- Button: login, acceder al servicion, usuario registrado -->
+				      <div class="controls">
+				        <button	class="btn btn-primary"
+				        				ng-disabled="accessUserForm.userField.$pristine"
+				        				ng-click="loginRegisterCtrl.checkAcces('login')">Login Usuario</button>
+				      </div>
+	                <!-- Button: darse de alta en el servicio, nuevo usuario -->
+				      <div class="controls">
+				        <button	class="btn btn-success"
+				        				ng-disabled="accessUserForm.userField.$pristine"
+				        				ng-click="loginRegisterCtrl.checkAcces('registro')">Nuevo registro</button>
+				      </div>
+			     </div>
+			</ng-form>
+
+			<!-- ALERTAS DE ERROR AL  USUARIO -->
+			<div class="panel panel-danger col-md-4 col-sm-4 pull-left"
+					ng-show='accessUserForm.userField.$dirty && loginRegisterCtrl.validAccessUserForm'>
+			  <div class="panel-body text-danger"
+			  		ng-show='accessUserForm.userField.email.$error.email ||
+			  					accessUserForm.userField.password.$error.minlength ||
+			  					accessUserForm.userField.password.$error.maxlength ||
+			  					accessUserForm.userField.password.$error.pattern ||
+			  					( !accessUserForm.userField.email.$viewValue ||
+			  					!accessUserForm.userField.password.$viewValue )'>
+			  					Formulario Incorrecto...
+			  </div>
+			  <div class="panel-body text-success"
+			  		ng-show='accessUserForm.userField.$valid &&
+			  					accessUserForm.userField.email.$viewValue &&
+			  					accessUserForm.userField.password.$viewValue &&
+			  					!accessUserForm.userField.email.$error.email'>
+			  					Formulario Correcto !!!
+			  </div>
+			  <div class="alert alert-warning"
+		  			 ng-show='accessUserForm.userField.$invalid || ( !accessUserForm.userField.email.$viewValue ||
+			  					!accessUserForm.userField.password.$viewValue )' >
+				 	 <span ng-show="!accessUserForm.userField.email.$viewValue">
+				 	 		Email requerido.</span><br/>
+				 	 <span ng-show="!accessUserForm.userField.password.$viewValue">
+				 	 		Password requerido.</span><br/>
+					 <span ng-show="accessUserForm.userField.password.$error.minlength">
+					 		Password demasiado corto (4).</span><br/>
+  					 <span ng-show="accessUserForm.userField.password.$error.maxlength">
+  					 		Password demasiado largo (10).</span><br/>
+                <span ng-show="accessUserForm.userField.password.$error.pattern">
+                		Password incorrecto: Un numero, una letra mayuscula y otra minuscula.</span><br/>
+                <span ng-show="accessUserForm.userField.email.$error.email">
+                		Dirección de email inválida.</span>
+			  </div>
+		</div>
+
+	</div>
+</div>

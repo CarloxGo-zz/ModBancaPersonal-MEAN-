@@ -1,0 +1,147 @@
+<mensaje-client class="msgClientNewMov">movimiento añadido correctamente</mensaje-client>
+
+<!-- APLICATION: formulario para la adicion de un nuevo movimiento, gasto o ingreso -->
+<div class="row-fluid">
+    <form action="" id='newMovForm' class="form-horizontal text-left">
+        <fieldset>
+            <mensaje>{{accountsCtrl.titulo.newMovTpl}}</mensaje>
+
+            <div class="row-fluid">
+
+                <!-- TIPO Y CATEGORIA DE NUEVO MOVIMIENTO -->
+                <div class="col-xs-12 col-sm-6" id="groupBtnCteg">
+                  <!-- TIPO Y CATEGORIA DE MOVIMIENTOS -->
+                  <div class="control-group">
+                      <label for="tipo" class="control-label">TIPO</label>
+                      <div class="controls">
+                          <div class="btn-group">
+                              <button class="btn btn-success changeCateg"
+                                      ng-click="accountsCtrl.resetTipo('ingreso')"
+                                      reset-categ
+                                      tableCateg='ingreso'
+                                      ng-class="{'active': accountsCtrl.nuevoMovimiento.esIngreso === 1}">
+                                <span ng-class="{'small': accountsCtrl.nuevoMovimiento.esIngreso === 0}">+ Ingresos</span>
+                              </button>
+                              <button class="btn btn-danger changeCateg"
+                                      ng-click="accountsCtrl.resetTipo('gasto')"
+                                      reset-categ
+                                      tableCateg='gasto'
+                                      ng-class="{'active': accountsCtrl.nuevoMovimiento.esGasto === 1}">
+                                <span ng-class="{'small': accountsCtrl.nuevoMovimiento.esGasto === 0}">- Gastos</span>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- CATEGORIA MOVIMIENTO-->
+                  <div class="control-group">
+                      <label class="control-label">CATEGORIA</label>
+                      <div class="controls">
+                        
+                        <span ng-show="accountsCtrl.nuevoMovimiento.esIngreso">
+                          <categoria-movimientos-ingresos
+                              model-categ="accountsCtrl.nuevoMovimiento.categoria">
+                          </categoria-movimientos-ingresos>
+                        </span>
+
+                        <span ng-show="accountsCtrl.nuevoMovimiento.esGasto">
+                            <categoria-movimientos-gastos
+                              model-categ="accountsCtrl.nuevoMovimiento.categoria">
+                            </categoria-movimientos-gastos>
+                        </span>
+                    </div>
+                  </div>
+                  
+                  <!-- CONCEPTO NUEVO MOVIMIENTO -->
+                  <div class="control-group">
+                      <label for="concepto" class="control-label">CONCEPTO</label>
+                      <div class="controls">
+                          <textarea name="concepto" class="input"
+                                    placeholder="Justificación del Movimiento"
+                                    ng-model="accountsCtrl.nuevoMovimiento.concepto"></textarea>
+                      </div>
+                  </div>
+                </div>
+
+                <!-- FECHA NUEVO MOVIMIENTO -->
+                <div class="col-xs-12 col-sm-6">
+                  <div class="control-group">
+                        <label for="fecha" class="control-label">FECHA</label>
+                        <span class="text-info"
+                              ng-show='accountsCtrl.nuevoMovimiento.fecha == accountsCtrl.fechaActual'> : Hoy</span>
+                        <div class="controls">
+                            <input type="date" name="fecha" class="input" id='movDate1'
+                                  ng-model="accountsCtrl.nuevoMovimiento.fecha">
+                        </div>
+                  </div>
+                  
+                  <!-- REFERENCIA DE NUEVO MOVIMIENTO -->
+                  <div class="control-group">
+                        <label for="factura" class="control-label">ID / FACTURA</label>
+                        <div class="controls">
+                            <input type="text" name="factura" class="input"
+                                  placeholder='factura/año'
+                                  title='codigo alfanumetrico, registro, factura'
+                                  ng-model="accountsCtrl.nuevoMovimiento.factura">
+                        </div>
+                  </div><br/>
+
+                  <!-- CANTIDAD DE NUEVO MOVIMENTO -->
+                  <div class="control-group importeBlock">
+                        <label for="importe" class="control-label">IMPORTE<small> : Euros</small></label>
+                        <div class="controls">
+                            <input type="number" name="importe" class="input"
+                                  ng-focus="accountsCtrl.checkValidImporte($event)"
+                                  ng-blur="accountsCtrl.checkValidImporte($event)"
+                                  ng-disabled="accountsCtrl.nuevoMovimiento.esNulo"
+                                  ng-keypress="accountsCtrl.voidKeyPress($event)"
+                                  ng-model="accountsCtrl.nuevoMovimiento.importe" value="">
+
+
+                            <input  type="checkbox" name="importeNull" id="importeNull" class="input"
+                                    ng-model="accountsCtrl.nuevoMovimiento.esNulo"
+                                    ng-click="accountsCtrl.isImporteNull($event)"/>
+                            <label for="importeNull">Nulo</label>
+
+
+                            <select name="optImpport"
+                                    ng-model = "optImpport"
+                                    ng-disabled="accountsCtrl.nuevoMovimiento.esNulo"
+                                    ng-change=" accountsCtrl.nuevoMovimiento.importe = optImpport;
+                                                optImpport = '';"
+                                    ng-options="optImpport for optImpport
+                                              in [50, 100, 200, 300, 400, 500, 1000, 1500, 2000]" >
+                              <option value="">{{optImpport}}</option>
+                          </select>
+                        </div>
+                  </div><br/>
+
+                  <div class="control-group">
+                      <strong>Categoria Seleccionada</strong>
+                      <span class="text-info">
+                       : {{ accountsCtrl.nuevoMovimiento.tipo }}
+                      -> {{ accountsCtrl.nuevoMovimiento.categoria || '[sin categoria]'}}</span>
+                  </div><br/>
+
+                  <!-- cargar nuevo objeto movimiento en movimientos[]:
+                  recuperar la cantidad del nuevo movimiento, la fecha y el tipo -->
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+                    <div class="control-group btnsaveNewMov">
+                      <button type="button" class="btn btn-primary btn-lg"
+                              ng-click="accountsCtrl.saveMovimiento()">
+                          <span>Añadir {{ accountsCtrl.nuevoMovimiento.tipo }}</span>
+                      </button>
+                      <button type="button" class="btn btn-link btn-lg"
+                              reset-categ
+                              ng-click="accountsCtrl.resetMovimiento()">
+                          <span>reiniciar</span>
+                      </button>
+                    </div>
+                </div>
+
+            </div>
+        </fieldset>
+    </form>
+</div>

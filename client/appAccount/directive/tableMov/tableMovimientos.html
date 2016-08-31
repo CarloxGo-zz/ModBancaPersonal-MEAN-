@@ -1,0 +1,103 @@
+<output-impresion class="printView"></output-impresion>
+
+<!-- LISTA DE MOVIMIENTOS --> 
+<div class="table-responsive">
+<table footer-fixed data-table-fixed="tableCountList" class="table table-hover" id="tableCountList">
+    <thead><tr class="info">
+        <th class="col-md-2 col-sm-2 orderCampo">
+            <a href="" ng-click="tablaMovCtr.checkCampoSentido('id')">documentos</a>
+            <span ng-show="tablaMovCtr.campo === 'id'" class="orderCampoId">
+                <span   class="glyphicon glyphicon-chevron-up"
+                        ng-show="tablaMovCtr.sentido"><span class="meanSentido">ultimos</span></span>
+                <span   class="glyphicon glyphicon-chevron-down"
+                        ng-show="!tablaMovCtr.sentido"><span class="meanSentido">primeros</span></span>
+            </span>
+        </th>
+        <th class="col-md-2 col-sm-2 orderCampo">
+            <a href="" ng-click="tablaMovCtr.checkCampoSentido('fecha')">fecha</a>
+            <span ng-show="tablaMovCtr.campo === 'fecha'" class="orderCampoFecha">
+                <span   class="glyphicon glyphicon-chevron-up"
+                        ng-show="tablaMovCtr.sentido"></span>
+                <span   class="glyphicon glyphicon-chevron-down"
+                        ng-show="!tablaMovCtr.sentido"></span>
+            </span>
+        </th>
+        <th class="col-md-2 col-sm-2 tipoMov">tipo
+            <!-- <div class="btn-group btnValorBuscado">
+                <button type="button"
+                        ng-class=" {    'btn btn-xs btn-default' : filtroMovCtr.valorBuscado == 'gasto',
+                                        'btn btn-xs btn-success' : filtroMovCtr.valorBuscado != 'gasto' } "
+                        reset-fixed-table
+                        ng-click="filtroMovCtr.valorBuscado='ingreso'">ingresos</button>
+                <button type="button"
+                        ng-class=" {    'btn btn-xs btn-default' : filtroMovCtr.valorBuscado == 'ingreso',
+                                        'btn btn-xs btn-success' : filtroMovCtr.valorBuscado != 'ingreso' } "
+                        reset-fixed-table
+                        ng-click="filtroMovCtr.valorBuscado='gasto'">gastos</button>
+            </div> -->
+        </th>
+        <th class="col-md-2 col-sm-2">
+              categoria
+        </th>
+        <th class="col-md-2 col-sm-2">concepto</th>
+        <th class="col-md-2 col-sm-2 orderCampo">
+            <a href="" ng-click="tablaMovCtr.checkCampoSentido('importe')">importe</a>
+            <span ng-show="tablaMovCtr.campo === 'importe'" class="orderCampoImporte">
+                <span   class="glyphicon glyphicon-chevron-up"
+                        ng-show="tablaMovCtr.sentido"></span>
+                <span   class="glyphicon glyphicon-chevron-down"
+                        ng-show="!tablaMovCtr.sentido"></span>
+            </span>
+        </th>
+    </tr></thead>
+    <tbody>
+        <!-- <tr ng-repeat=" movimiento in accountsCtrl.movimientos |
+                        impInput:filtroMovCtr.valorCorte |
+                        filter:filtroMovCtr.valorBuscado |
+                        orderBy:campo:sentido |
+                        dateRange:start_date:end_date:filtroMovCtr.checkData"> 
+        //ahora tenemos 'tablaMovCtr.filteredMov', que captura el array de movimientos filtrados
+        -->
+        <tr redirect-select-mov ng-repeat=" movimiento in tablaMovCtr.filteredMov = (  accountsCtrl.movimientos |
+                                                        impInput:filtroMovCtr.valorCorte |
+                                                        filter:filtroMovCtr.valorBuscado |
+                                                        orderBy:tablaMovCtr.campo:tablaMovCtr.sentido |
+                                                        dateRange:filtroMovCtr.start_date:filtroMovCtr.end_date:filtroMovCtr.checkData )" >
+            <td class="movReferenceDoc">
+                <span class="small">{{movimiento.id}}#</span>
+                <span class="setWidth concat">{{ movimiento.factura }}</span>
+            </td>
+            <td>{{movimiento.fecha | byDefault | date}}</td>
+            <td>{{movimiento.tipo | byDefault}}</td>
+            <td>{{movimiento.categoria | byDefault | capitalyzeAll}}</td>
+            <td class="setWidth concat">{{movimiento.concepto}}</td>
+            <td ng-class=" { 'text-success': movimiento.tipo === 'ingreso',
+                             'text-danger' : movimiento.tipo === 'gasto'    } ">
+                <strong>{{movimiento.importe | number:2 | parseAmount:'Euros' }}</strong>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+       <tr class="info">
+           <td>{{tablaMovCtr.filteredMov.length}} documentos</td>
+           <td>fecha</td>
+           <td>tipo</td>
+           <td class="categMov">
+              <span ng-show="filtroMovCtr.valorBuscado!='ingreso' && filtroMovCtr.valorBuscado!='gasto'">
+                  categorias<br/>{{filtroMovCtr.valorBuscado}}
+              </span>
+              <span ng-show="filtroMovCtr.valorBuscado=='ingreso'">todos los Ingresos</span>
+              <span ng-show="filtroMovCtr.valorBuscado=='gasto'">todos los Gastos</span>
+           </td>
+           <td>concepto</td>
+           <td ng-class=" { 'text-danger'   : tablaMovCtr.getTotal() < 0,
+                            'text-success' : tablaMovCtr.getTotal() >= 0} ">
+              <strong>
+                  total
+                  <span class="noWrap">{{ tablaMovCtr.getTotal() | number:2 | parseAmount:'Euros' }}</span>     
+              </strong>
+           </td>
+       </tr>
+   </tfoot>   
+</table>
+</div>

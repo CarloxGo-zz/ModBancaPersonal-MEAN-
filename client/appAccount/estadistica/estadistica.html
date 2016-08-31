@@ -1,0 +1,53 @@
+<div class="container estadisticaContainer">
+	<div class="row-fluid">
+		<mensaje>{{estadisticaCtrl.titulo}}</mensaje>
+   </div>
+
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 upgrade">
+         <span>Estadistica por meses : </span>
+         <input   type="month" name="inputMonthStats"
+                  ng-model="estadisticaCtrl.inputMonthStats"
+                  data-disabled="true"
+                  disabled="disabled"
+                  load-canvas-estats/>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6">
+         <span>Estadistica por años : </span>
+         <input   type="number" name="inputYearStats"
+                  ng-model="estadisticaCtrl.inputYearStats"
+                  load-canvas-estats/>
+      </div>
+   </div><br/><br/>
+
+   <div class="row-fluid" >
+      <div class="col-xs-12 col-sm-12 col-md-6">
+         <p class="titleStat">Gastos VS Ingresos</p>
+         <ul class="chartStat">
+            <li data-categ="ingreso">ingresos</li>
+            <li data-categ="gasto">gastos</li>
+         </ul>
+         <div class="canvasStat" id="canvasGasIng"></div>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6">
+         <p class="titleStat">Saldo <small>(Ingresos - Gastos)</small></p>
+         <ul class="chartStat">
+            <li data-categ="saldo">saldo</li>
+         </ul>
+         <div class="canvasStat" id="canvasSaldo"></div>
+      </div>
+
+      <div class="clearfix visible-xs"></div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6">
+         <p class="titleStat">Evolución distintos Gastos</p>
+         <div class="canvasStat" id="canvasEvGastos"></div>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6">
+         <p class="titleStat">Evolución distintos Ingresos</p>
+         <div class="canvasStat" id="canvasEvIngresos"></div>
+      </div>
+   </div>
+</div>

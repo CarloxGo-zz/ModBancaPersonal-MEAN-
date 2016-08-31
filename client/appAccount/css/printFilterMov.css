@@ -1,0 +1,102 @@
+@media print {
+   * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+   }
+	
+	body{
+		font-family: verdana, arial, sans-serif ;
+		font-size: 14px ;
+		color: #4C4C4C;
+	}
+
+	.ng-hide,
+	.btnValorBuscado,
+	.orderCampoImporte,
+	.orderCampoId,
+	.orderCampoFecha,
+  select{
+		display: none;
+	}
+
+	.printView{
+		display: block;
+  }
+
+  dt, dd{
+    font-size: 10px; 
+  }
+  dt{
+    margin-top: 15px;
+  }
+
+  a, a:visited { text-decoration: none; }
+	
+  #tableCountList>thead>tr>th,
+  #tableCountList>tbody>tr>td:nth-of-type(3):first-Letter, /*tipo movimiento*/
+  #tableCountList>tbody>tr>td:nth-of-type(4):first-Letter{ /*categoria movimiento*/
+    text-transform: uppercase;
+  }
+
+  #totalPrintMov{
+    margin-top: 30px;
+  }
+  #totalPrintMov h2{
+    font-size: 14px;
+  }
+  #tableCountList tfoot tr>td:last-child {
+    font-size: 16px;
+    line-height: 16px;
+    text-transform: uppercase;
+  }
+
+  .msgPrint time, #totalPrintMov>dl{
+    margin: 10px 0 0 30px;
+  }
+
+ 	table{
+ 		margin: 50px auto 0;
+ 	}
+  th, td {
+      padding: 6px ;
+      text-align: center ;
+      font-size: 12px;
+      }
+
+  th {
+      border-bottom: 2px solid #333333 ;
+      }
+
+
+  td {
+      border-bottom: 1px solid #999999 ;
+      }
+
+    tfoot>td, th{
+      font-size: 10px;
+    }
+
+   tbody>tr:last-child>td{
+   	border-bottom: none;
+   }
+
+  tfoot td {
+      border-bottom-width: 0px ;
+      border-top: 2px solid #333333 ;
+      padding-top: 20px ;
+      }
+
+    thead { display: table-header-group; }
+
+    tr, img { page-break-inside:avoid; page-break-after:auto; }
+
+    img { max-width: 100% !important; }
+
+    @page { margin: 0.5cm; }
+
+    p, h2, h3 { orphans: 3; widows: 3; }
+
+    h2, h3 { page-break-after: avoid; }
+}

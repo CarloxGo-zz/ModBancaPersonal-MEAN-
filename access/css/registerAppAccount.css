@@ -1,0 +1,494 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, main,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    background:transparent;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, div, li
+{
+    display:block;
+}
+html, body
+{
+    height: 100%;/*adaptar el diseño al ancho de la ventana del navegador*/
+    max-width: 100%;/*nada puede ser mas ancho que la pagina, evitamos el scroll horizontal*/
+    margin:0 auto;
+    padding: 0;
+}
+html
+{
+    font: 18px verdana, arial, sans-serif;/*1rem = 16px*/
+    color: #4C4C4C;
+    cursor: auto;
+    -webkit-font-smoothing: antialiased;
+}
+header, header h1, header h2, header h3, header h4
+{
+    text-align: center;
+    font-weight: bold;
+    font-family: sans-serif, roboto;
+    line-height: 1em;
+}
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+nav a, .subtitles
+{
+    font-size: 14px;
+    font-size: 0.9rem;
+    text-align: left;
+    text-transform: lowercase;
+    line-height: 1em;
+}
+p, pre
+{ margin: 1em 0; }
+p:first-letter, nav a:first-letter, .subtitles:first-letter
+{
+    text-transform: uppercase;
+}
+small {
+    font-weight: bold;
+    font-size: 70%;
+}
+a, a:link, a:visited, a:hover
+{
+    text-decoration: none;
+    color: rgb(55, 55, 55);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+a:hover
+{
+    color: rgb(255, 255, 255);
+    border-bottom: none;
+}
+
+/*<i class="idea"> Frase q expresa una idea, concepto, un ejemplo*/
+.idea{ font-style: italic; }
+.idea{ quotes: "\00AB" "\00BB";  }
+.idea:before
+{ content: open-quote; }
+.idea:after
+{ content: close-quote; }
+.question:before{
+    content: '¿';
+}
+.question:after{
+    content: '?';
+}
+
+/*<b class="lead">: Frase importante del texto, resumen del contexto*/
+/*<strong>: Llamar la atencion del lector*/
+.lead, strong {font-weight: bold;}
+.lead {text-decoration: underline;}
+
+/*<img alt="" longdesc="url"/><a rel="longdesc" href="url">[D]</a>*/
+a[rel="longdesc"]{text-decoration: underline;}
+a[rel="longdesc"]:before{content:"[";} a[rel="longdesc"]:after{content:"]";}
+
+label[for], button, select, input[type='image'],
+input[type='button'], input[type='submit'],
+a[href], a:link, a:visited, a:hover
+{ cursor: pointer; }
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+body {
+    background-repeat: no-repeat;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-image: 
+        url(../img/backgroundCoin.png), url(../img/backgroundDollar.png),
+        url(../img/backgroundDollar.png), url(../img/backgroundCoin.png),
+        url(../img/backgroundCoin.png), url(../img/backgroundDollar.png),
+        url(../img/backgroundCoin.png);
+    background-position: 5% 20%, 40% 52%, 70% 67%, 10% 87%, 90% 7%, 50% 94%, 109% 112%;
+    background-size: 5%, 10%, 5%, 16%, 12%, 5%, 20%;
+    background-color: rgba(255, 255, 0, 0.38);
+}
+
+#infoContent{
+    margin: 0 auto 0;
+    padding: 50px 25px;
+    box-shadow: 5px 0 10px #3D9200,
+     -4px 0 10px #3D9200,
+     5px 0 10px #3D9200,
+     -5px 0 10px #3D9200;
+    background-color: rgba(108, 214, 108, 0.9);
+    border-right: 2px solid #3D9200;
+    color: rgb(5, 82, 121);
+}
+.filterBright{
+    filter: brightness(1.2) contrast(1.2);
+    -moz-filter: brightness(1.2) contrast(1.2);            /*Firefox*/
+    -webkit-filter: brightness(1.2) contrast(1.2);     /*Safari y Chrome*/
+    -o-filter: brightness(1.2) contrast(1.2);            /*Opera*/
+    -khtml-filter: brightness(1.2) contrast(1.2);         /*Konkeror*/
+    -ms-filter: brightness(1.2) contrast(1.2);            /*Explorer*/
+    -chrome-filter: brightness(1.2) contrast(1.2);         /*Chrmoe*/
+}
+.filterHightBright{
+    filter: brightness(2) contrast(2);
+    -moz-filter: brightness(2) contrast(2);            /*Firefox*/
+    -webkit-filter: brightness(2) contrast(2);     /*Safari y Chrome*/
+    -o-filter: brightness(2) contrast(2);            /*Opera*/
+    -khtml-filter: brightness(2) contrast(2);         /*Konkeror*/
+    -ms-filter: brightness(2) contrast(2);            /*Explorer*/
+    -chrome-filter: brightness(2) contrast(2);         /*Chrmoe*/   
+    color: rgb(0, 0, 0) !important;
+}
+#accessApp{
+    background-color: rgba(0, 193, 43, 0.61);
+}
+#accessApp, #infoContent{
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+}
+#accessApp{
+    
+}
+header{
+text-align: center;
+position: relative;
+border-bottom: 2px solid rgb(0, 138, 206);
+padding-bottom: 3em;
+    }
+h1{
+ margin: -0.5em 0 0;
+font-size: 1.5em;
+    }
+h1:first-letter,
+#comercial ul li:first-letter{
+    text-transform: uppercase;
+}
+h1 .appName{
+    visibility: hidden;
+}
+h1 .appName:before{
+    content: attr(title);
+    visibility: visible;
+    text-transform: capitalize;
+    display: block;
+    margin-top: 0.2em;
+text-shadow: 3px 2px 5px rgba(108, 221, 93, 0.66), 2px 2px 2px rgb(255, 255, 255);
+}
+.lead{
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+header .logo {
+    border: 1px solid red;
+    height: 100%;
+    width: 100px;
+    float: right;
+    top: 0;
+    margin-top: -46px;
+    margin-right: 120px;
+}
+#comercial{
+    text-align: center;
+    margin: 3em 0;
+}
+#comercial ul{
+    text-align: left;
+    margin-top: 1.5em;
+}
+#comercial ul li
+{
+    margin: 0 auto;
+    padding: 6px 12px;
+    font-size: 0.8em;
+}
+#comercial ul li:after{
+    content: ".";
+}
+#comercial ul li:before{
+content: "+ ";
+color: rgb(0, 138, 206);
+font-weight: bold;
+}
+#comercial b{
+    line-height: 1.5em;
+
+    }
+.mark{
+    text-transform: uppercase;
+ color: rgb(218, 125, 8);
+    font-family: cursive;
+}
+.btnAccessApp{
+    position: relative;
+}
+.btnAccessApp > *{
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+.btnAccessApp:before,
+.btnAccessApp:after{
+    content: "";
+    display: table;
+}
+.btnAccessApp:after
+{ clear: both; }
+.btnLoginApp
+{ float: left; }
+.btnRegisterApp>p
+{ float: right; }
+
+.buttonAccess{
+    position: relative;
+    border: 0;
+    background-color: rgba(27, 27, 27, 0.2);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.75);
+    color: white;
+    font-family: serif;
+    margin-bottom: 45px;
+    padding: 45px 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: all 0.3s ease;
+}
+.buttonAccess:hover,
+.buttonAccess:focus{
+    background-color: rgb(53, 112, 57);
+    box-shadow: -5px -4px 1px 0 rgba(255, 255, 255, 0.6) inset;
+}
+.buttonAccess:hover .triangle,
+.buttonAccess:focus .triangle{
+    border-width: 0 0 0 0 !important;
+}
+.buttonAccess:active{
+    box-shadow: 0 0 0 0 rgb(0, 0, 0);
+}
+.button-title{
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 4.7em;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.button-title:before{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    border-color: transparent transparent rgba(47, 99, 6, 0.3) transparent;
+    border-style: solid;
+    border-width: 0 237px 105px 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    transition: all 0.35s ease;
+    transform: rotateZ(180deg);
+    -webkit-filter: blur(8px)
+                    contrast(0.5)
+                    brightness(1.2)
+                    drop-shadow(13px 13px 20px black);
+}
+.perspectiveX {
+    transition: all 0.35s ease;
+    -webkit-transform: perspective( 20px ) rotateX( 10deg );
+    width: 50%;
+    height: 100%;
+    display: inline-table;
+    margin: 0 auto;
+}
+.buttonAccess:hover .button-title:before,
+.buttonAccess:focus .button-title:before{
+    /*border-color: transparent transparent transparent transparent;*/
+    border-width: 0 0px 105px 0;
+}
+.buttonAccess:hover .perspectiveX,
+.buttonAccess:focus .perspectiveX{
+    -webkit-transform: perspective( 0 ) rotateX( 0 );
+    color: rgb(255, 255, 255) !important;
+}
+.error, .errorServer{ 
+    display: block;
+    color: rgb(255, 0, 0);
+    font-size: 0.8em;
+    margin-top: 3px;
+    width: 50%;
+    margin-left: 20%;
+    text-indent: -2.5%;
+}
+.oculto{ display: none !important;}
+
+#accessHouseAccountViews h2{
+    text-align: center;
+    font-weight: bold;
+    font-family: sans-serif, roboto;
+    line-height: 1em;
+    font-size: 1em;
+
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    font-style: italic;
+    color: rgb(5, 82, 121);
+}
+#accessHouseAccountViews h2:first-letter{
+    text-transform: capitalize;
+}
+.noBreak{
+    white-space: nowrap;
+    text-decoration: underline;
+    text-transform: capitalize;
+    line-height: 1.5em;
+}
+#accessHouseAccountViews form,
+#permissionsHouseAccountViews ul{
+margin-top: 1.5em;
+text-indent: 17%;
+font-size: 0.9em;
+word-spacing: 2px;
+letter-spacing: 0.5px;
+}
+#accessHouseAccountViews input{
+width: 175px;
+text-align: center;
+position: absolute;
+top: 0;
+left: 49%;
+}
+#loginHouseAccountViews form{
+    text-indent: 24%;
+}
+#loginHouseAccountViews .error{
+    text-indent: 4%;
+}
+#loginHouseAccountViews input{
+    left: 44%;
+}
+
+#accessHouseAccountViews input[type="submit"]{
+    width: 179px;
+    height: 30px;
+    background-color: rgba(63, 226, 23, 1);
+    border: 2px solid rgba(37, 126, 16, 0.59);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: sans-serif, roboto;
+    font-style: italic;
+    letter-spacing: 1.5px;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+}
+#accessHouseAccountViews input[type="submit"]:hover{
+     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.75); 
+     border: 0;
+}
+#accessHouseAccountViews form>p{
+    position: relative;
+}
+#permissionsHouseAccountViews ul{
+    text-indent: 0;
+}
+#permissionsHouseAccountViews {
+    text-align: center;
+}
+#permissionsHouseAccountViews ul a {
+    border-bottom: 1px solid #000;
+}
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+    .button-title:before {
+        border-width: 0 360px 90px 0;
+    }
+    html{
+        color: #000;
+    }
+    body:before{
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 5;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 102, 4, 0.8);
+        -moz-filter: blur(9px) brightness(2);
+        -webkit-filter: blur(9px) brightness(2);
+        -o-filter: blur(9px) brightness(2);
+        -khtml-filter: blur(9px) brightness(2);
+        -ms-filter: blur(9px) brightness(2);
+        -chrome-filter: blur(9px) brightness(2);
+    }
+    body:after{
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    body>*{
+        z-index: 20;
+    }
+    header {
+        border-bottom: 4px solid rgb(0, 138, 206);
+        padding-bottom: 2em;
+    }
+    #accessApp, #infoContent {
+        position: relative;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+    #infoContent{
+        padding-bottom: 0;
+    }
+    #accessApp, #infoContent{
+        background-color: transparent;
+    }
+    #comercial{
+        display: none;
+    }
+}

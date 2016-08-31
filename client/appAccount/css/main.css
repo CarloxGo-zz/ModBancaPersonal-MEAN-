@@ -1,0 +1,603 @@
+
+#accountSectionViews {
+	top: 100px;
+}
+#totalCountsSection header{
+	margin-bottom: 50px;
+}
+.row{
+	margin: 0 auto 0;
+}
+#tableCountList>thead>tr>th,
+#tableCountList>tbody>tr>td:nth-of-type(3):first-Letter, /*tipo movimiento*/
+#tableCountList>tbody>tr>td:nth-of-type(4):first-Letter{ /*categoria movimiento*/
+	text-transform: uppercase;
+}
+#tableCountList th,
+#tableCountList td{
+	text-align: center;
+    vertical-align: middle !important;
+}
+#tableCountList tbody td{   
+    vertical-align: middle !important;
+}
+#tableCountList .glyphicon{
+    color: rgb(88, 189, 10) !important;
+}
+#tableCountList .categMov>span{
+    text-transform: capitalize;
+    line-height: 2em;
+}
+
+input[name="resetMovFilterBtn"],
+.closeSessionBtn{
+    transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+}
+.filterActive,
+.closeSessionBtn:hover{
+    font-size: 1.1em;
+    background-color: #F0954E;
+    border-color: #EE7836;
+}
+
+.closeSessionBtn:hover > a{
+    color: white !important;   
+}
+
+#tableCountList select{
+    display: inline;
+    vertical-align: sub;
+    width: 10px;
+    height: 25px;
+}
+#tableCountList .tipoMov .btn-group{   
+    vertical-align: sub;
+}
+/*configurar elipsi de propiedad 'concepto' a 150px
+--> th.col-md-2.colsm-2*/
+.setWidth{
+    max-width: 150px;
+}
+.concat{
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: inherit;
+}
+
+.controls textarea{
+	width: 80%;
+	height: 100px;
+}
+
+tbody tr:hover{
+    cursor: pointer;
+}
+
+.selectedButon,
+.selectedInput{
+        border: 3px solid rgb(88, 189, 10) !important;
+}
+
+.meanSentido{
+    position: absolute;
+    top: -12px;
+    width: 100px;
+    right: -60px;
+    font-size: 0.7em;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.movReferenceDoc{
+    position: relative;
+    line-height: 2em !important;
+}
+.movReferenceDoc>span{
+    position: absolute;
+    height: 100%;
+    top: 25%;
+}
+.movReferenceDoc>span:first-child{
+    left: 0;
+    width: 20%;
+    line-height: 2.5em;
+}
+.movReferenceDoc>span:last-child{
+    right: 0;
+    width: 80%;
+    text-align: center;
+    line-height: 1.8em;
+}
+.movReferenceDoc .setWidth{
+    max-width: 130px;
+}
+
+input[type='text']:valid:focus,
+input[type='url']:valid:focus,
+input[type='search']:valid:focus,
+input[type='password']:valid:focus,
+input[type='email']:valid:focus{
+    animation: anim_focus 2s linear 0s infinite normal;
+    -webkit-animation: anim_focus 2s linear 0s infinite normal;
+    -moz-animation: anim_focus 2s linear 0s infinite normal;
+}
+@keyframes anim_focus{
+    from{ background-color: rgb(193, 250, 149); }
+    50%{ background-color: rgb(88, 189, 10); }
+    to{ background-color: rgb(193, 250, 149); }
+}
+@-webkit-keyframes anim_focus{
+    from{ background-color: rgb(193, 250, 149); }
+    50%{ background-color: rgb(88, 189, 10); }
+    to{ background-color: rgb(193, 250, 149); }
+}
+@-moz-keyframes anim_focus{
+    from{ background-color: rgb(193, 250, 149); }
+    50%{ background-color: rgb(88, 189, 10); }
+    to{ background-color: rgb(193, 250, 149); }
+}
+input:valid:focus::-webkit-input-placeholder {
+   color: rgb(100, 100, 100);
+}
+input:valid:focus:-moz-placeholder { /* Firefox 18- */
+   color: rgb(100, 100, 100);
+}
+input:valid:focus::-moz-placeholder {  /* Firefox 19+ */
+   color: rgb(100, 100, 100);
+}
+input:valid:focus:-ms-input-placeholder {  
+   color: rgb(100, 100, 100);
+}
+.printView{
+    display: none;
+}
+
+.small{
+    font-size: 75% !important;
+}
+#tableCountList .small {
+    color: rgb(165, 144, 144);
+}
+
+#newMovForm .small {
+    color: rgb(255, 255, 255);
+}
+
+#newMovForm [for="tipo"],
+#newMovForm [for="concepto"],
+#newMovForm [for="factura"],
+#newMovForm [for="fecha"],
+#newMovForm [for="categ"],
+#newMovForm [for="importe"]{
+    margin-bottom: 5px;
+}
+#newMovForm [name="concepto"],
+#newMovForm [name="factura"],
+#newMovForm [name="fecha"],
+#newMovForm [name="categ"],
+#newMovForm [name="importe"]{
+    /*text-align: center;*/
+    text-indent: 15px;
+}
+#newMovForm .control-group{
+    margin-bottom: 1.5em;
+}
+
+#filterMovForm .control-label{
+    text-transform: uppercase;
+}
+#filterMovForm .control-label + div{
+margin: 0.2em 0 1em 1em;}
+#filterMovForm [for="tipo"] + div,
+#filterMovForm [for="categ"] + div{
+    text-transform: capitalize;
+}
+#filterMovForm [for="concepto"] + div:first-letter{
+    text-transform: capitalize;
+}
+
+#tableCountList tfoot td{
+    font-size: 0.7em;
+    line-height: 0.7em;
+    text-transform: uppercase;
+    font-weight: bold;
+    vertical-align: middle;
+}
+#tableCountList tfoot td.categMov{
+    line-height: 1.5em;
+}
+#tableCountList tfoot tr>td:last-child{
+    font-size: 16px;
+    line-height: 16px;
+}
+.panel-heading{
+    text-transform: capitalize;
+    font-family: serif;
+    word-spacing: 5px;
+    letter-spacing: 1px;
+}
+.panel-heading a:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    font-size: 0.7em;
+    float: right; 
+    color: grey;
+    line-height: 1.7em;
+}
+
+.collapseGlyphicons:after {
+    content: "\e080" !important;
+    font-size: 1em !important;
+    line-height: 1em !important;
+}
+
+#personalSearchFilter,
+#panelAdvancedFilters{
+    margin: 30px auto; /*fusion de margenes verticales*/
+}
+#collapseOne{
+    display: none;
+}
+
+.editSingleMovBtn,
+.UpdateSingleMovBtn,
+.resetSingleMovBtn{
+    margin-left: 50px;
+    font-size: 0.7em;
+}
+.deleteSingleMovBtn{
+ font-size: 0.7em;   
+}
+.msgClientUpdateMov,
+.msgClientDeleteMov,
+.msgClientNewMov{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 50;
+}
+.bannerMsgclient{
+position: absolute;
+text-transform: capitalize;
+width: 300px;
+height: 100px;
+font-size: 0.8em;
+line-height: 1.5em;
+color: rgb(24, 114, 7);
+font-weight: bold;
+top: calc( 50% - 50px );
+left: calc( 50% - 150px );
+}
+section[name="verMovimiento"]{
+    z-index: 10;
+}
+.importeBlock{
+    position: relative;
+}
+/*////mover el select de cantidades al extremo del importe, y colocar los euros justo a la izquierda*/
+select[name="optImpport"]{
+position: absolute;
+z-index: 10;
+top: 36px;
+left: 90px;
+height: 30%;
+border: none;
+outline: none;
+text-align: center;
+background-color: #428bca;
+border-radius: 4px;
+background-color: rgb(235, 235, 228);
+border: 1px solid rgb(185, 175, 175);
+}
+input[name="importe"]::-webkit-inner-spin-button, 
+input[name="importe"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+select[name="optImpport"]:disabled{
+    display: none;
+}
+select[name="optImpport"] option{
+    background-color: #fff !important;
+}
+label[for="importe"]>small{
+    color: #31708f;
+}
+
+.btnsaveNewMov{
+    border-top: 1px solid grey;
+    padding-top: 2em;
+    text-align: center;
+}
+categoria-movimientos-ingresos select,
+categoria-movimientos-gastos select{
+    left: 13.5em;
+    position: absolute;
+    width: 15em;
+}
+categoria-movimientos-ingresos select{
+    left: 9.5em;
+}
+
+label[for="categ"]{
+    position: relative;
+    color: #31708f;
+}
+label[for="categ"]:after{
+    content: " : ";
+    display: block;
+    position: absolute;
+    left: 11em;
+    top: 0;
+}
+categoria-movimientos-ingresos label[for="categ"]:after{
+    left: 6em;
+}
+#collapseOne h3 {
+    text-transform: uppercase;
+    font-style: oblique;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    font-size: 1.4em;
+    border-bottom: 1px solid grey;
+    width: 50%;
+}
+#collapseOne header + .row{
+    margin-top: 2em;
+}
+
+.panelFilterImporte .pagination,
+.filterPanel.panelFilterCateg{
+    margin-bottom: 0;
+}
+.filterPanel{
+    position: relative;
+    margin: 0 0 3em;
+}
+.panelFilterCateg div[class^='col']:last-child,
+.panelFilterFecha div[class^='col']:last-child,
+.panelFilterFecha div[class^="col"]{
+    text-align: left;
+}
+.panelFilterFecha div[class^="col"]:first-of-type{
+    margin-left: 15%;
+    margin-right: -20%;
+    text-transform: capitalize;
+}
+.panelFilterFecha ul[role="tablist"]:nth-of-type(2){
+    color: #2a6496;
+    margin-left: 1em;
+}
+
+.panelFilterFecha div[class^="col"]:last-of-type ul li{
+    position: relative;
+    line-height: 3em;
+    text-transform: capitalize;
+    color: #2a6496;
+}
+/*.panelFilterFecha div[class^="col"]:last-of-type ul li:after{
+    content : ": ";
+}*/
+/*.panelFilterFecha div[class^="col"]:last-of-type ul li:last-child{
+    margin-top: 1.5em;
+}
+*/
+.panelFilterFecha .filterDate{
+    position: absolute;
+    left: 4em;
+}
+
+.panelFilterFecha .filterDate + .glyphicon {
+    left: 8.5em;
+    font-size: 1.5em;
+    top: 0.2em;
+}
+.forFilterDate{
+    display: inline-block;
+    width: 45px;
+}
+.panelFilterCateg .btnValorBuscado>button {
+    font-size: 1em;
+    line-height: 2em;
+    padding: 0 1em;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.estadisticaContainer{
+    width: 100%;
+}
+/*.estadisticaContainer div[class^="col"]{
+    box-shadow: inset 1px -1px 1px #A1A1EE, inset -1px 1px 1px #A1A1EE;
+    height: 300px;
+}
+.estadisticaContainer div[class^="col"]:nth-child(odd){
+    box-shadow: inset 1px -1px 1px #A1A1EE, inset 0  1px 1px #A1A1EE;
+}*/
+canvas {
+    box-shadow: inset 1px -1px 10px #A1A1EE, inset 0px 1px 1px #A1A1EE;
+    height: 300px; /*solo al cargar, ChartJS la resetea*/
+}
+.chartStat{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    height: 30px; /*asi mantenemos diempre la misma altira en los contenerdores de canvas*/
+    margin-bottom: 0;
+}
+.chartStat>li{
+    position: relative;
+    display: inline-block;
+    line-height: 30px;
+    text-align: center;
+    width: 100px;
+    text-transform: capitalize;
+}
+.chartStat>li:before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 10px;
+    top: 5px;
+    border-radius: 3px;
+}
+.chartStat>li[data-categ="ingreso"]:before,
+.chartStat>li[data-categ="saldo"]:before
+{ background-color: rgb(151,187,205); }
+.chartStat>li[data-categ="gasto"]:before{ background-color: rgb(220,220,220); }
+
+.estadisticaContainer .titleStat{
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 5px;
+}
+.estadisticaContainer .titleStat small{
+    color: #31708f;  
+}
+.canvasStat{
+    width: 100%;
+    height: 240px;
+    text-align: center
+}
+.canvasStat>canvas{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dedef8;
+}
+.upgrade [data-disabled="true"]{
+    visibility: visible;
+    transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+}
+.upgrade:hover [data-disabled="true"]{
+    background-color: #D89898;
+    opacity: 0.5;
+}
+.estadisticaContainer input{
+    text-align: center;
+}
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+.chromeframe
+{
+    background: #E7E7E7;
+    color: #000;
+    width: 50%;
+    padding: 10px;
+    margin: 10% auto;
+    font-size: 16px;
+}
+.chromeframe a
+{
+    color: #239407;
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 890px;
+    }
+}
+
+@media screen and (max-width: 768px){
+	#accountSectionViews {
+		top: 140px;	
+	}
+	h1{
+		font-size: 25px;
+	}
+    .orderCampo{ position: relative !important; }
+    .orderCampo .orderCampoId{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    .orderCampo .orderCampoFecha,
+    .orderCampo .orderCampoImporte{
+        top: 31px;
+        left: 74px;
+    }
+    .meanSentido{
+        top: 0;
+        width: 100px;
+        right: -80px;
+    }
+
+    .btn-group.btnValorBuscado {
+        display: flex;
+    }
+    .canvasStat>canvas{
+        width: 100% !important;
+    }
+}
+
+.noWrap:before{
+    content: " : ";
+}
+@media only screen and (max-width : 1200px){
+    .noWrap{
+        display: block;
+    }
+    .noWrap:before{
+        content: "";
+    }
+}
+
+@media only screen and (max-width : 992px){
+    #tableCountList th:first-child{
+        color: red;
+        padding-top: 20px;
+    }
+    .canvasStat {
+        height: inherit;
+    }
+    /*.canvasStat>canvas{
+        width: 70%;
+    }*/
+}
+@media only screen and (min-width: 992px){
+    .estadisticaContainer{
+        width: 100%;
+    }
+    .container{
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width : 768px) and (max-width : 992px){
+    .orderCampo{ position: relative !important; }
+    .orderCampo .orderCampoId{
+        position: absolute;
+        top: 4px;
+        left: 23px;
+    }
+    .meanSentido {
+        top: 2px;
+        right: -80px;
+    }
+    .btn-group.btnValorBuscado {
+        display: inline-flex;
+    }
+    #tableCountList select{
+        width: 100%;
+    }
+}

@@ -1,0 +1,29 @@
+<mensaje class="msgPrint">
+  <time>Fecha de impresion: {{outPrintCtrl.fechaDeImpresion | date:'medium'}}</time>
+</mensaje>
+<div id="totalPrintMov">
+	 <h2>
+	 	<strong>{{outPrintCtrl.totalPrintMov(tablaMovCtr.filteredMov.length, tablaMovCtr.getTotal())}}</strong>
+	 </h2>
+
+	 <dl>
+		<span ng-hide='!filtroMovCtr.checkData ||
+							(!filtroMovCtr.start_date && !filtroMovCtr.end_date)'>
+	     <dt>Fechas filtradas</dt>
+	         <dd>{{outPrintCtrl.fechasFiltradas(filtroMovCtr.start_date, filtroMovCtr.end_date)}}</dd>
+		</span>
+
+	  <dt>Valores filtrados</dt>
+	      <dd>{{outPrintCtrl.valoresFiltrados(filtroMovCtr.valorCorte)}}</dd>
+
+	  <dt>Categorias filtradas</dt>
+	      <dd>{{outPrintCtrl.categMov(filtroMovCtr.valorBuscado, filtroMovCtr.categoria) | capitalyzeAll:'y'}}</dd>
+
+		<span ng-show="!!filtroMovCtr.valorBuscado">
+		 	<span ng-show="!outPrintCtrl.IsValorBuscadoType(filtroMovCtr.valorBuscado)">
+		     <dt>Filtro de Búsqueda</dt>
+		         <dd>{{filtroMovCtr.valorBuscado | capitalyzeAll}}</dd>
+		 	</span>
+		</span>
+	 </dl>
+</div>
